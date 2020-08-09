@@ -1,0 +1,20 @@
+#服务端口号
+server:
+  port: 9700
+#服务名称
+spring:
+  application:
+    name: springcloud-zuul-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+zuul:
+  ignored-services: "*"
+  routes:
+    a:
+      path: /api/a/**
+      serviceId: springcloud-ribbon-client
+    b:
+      path: /api/b/**
+      serviceId: springcloud-feign-client
